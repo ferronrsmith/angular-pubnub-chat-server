@@ -1,0 +1,8 @@
+img#imgPg {
+    position: absolute;
+    left: 50%; top: 50%; margin-left: -285px; margin-top: -190px;
+}
+
+div#msgPg {
+    text-align: center; font-family: 'Ubuntu', sans-serif; font-size: 50px
+}

@@ -1,0 +1,6 @@
+*.pyc
+*.sh
+*.txt
+*.bak
+*.jar
+run.py
