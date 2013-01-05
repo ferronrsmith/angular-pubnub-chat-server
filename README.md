@@ -1,14 +1,23 @@
-"""
- Database configuration and SQL-Alchemy Set-up
-"""
+DB Chat Control Center
+==========================
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm.session import sessionmaker
+server component for the angular pubnub chat application. Built with python
 
-mode = 'test'  # can be test / dev /prod
 
+Configuration
+-------------------------
+```python
+DEBUG = True
+SECRET_KEY = ('\xa3\xb6\x15\xe3E\xc4\x8c\xbaT\x14\xd1:'
+              '\xafc\x9c|.\xc0H\x8d\xf2\xe5\xbd\xd5')
+```
+
+> All configuration is contained within the app.cfg
+
+
+DB Configuration
+-------------------------
+```python
 # production configuration := uses mysql
 # cloud-based db solution for application scaling & mobile endpoint support
 if mode == 'prod':
@@ -20,15 +29,10 @@ elif mode == 'dev':
 else:
     # test configuration := uses sqlite
     engine = create_engine('sqlite:///chat.db', convert_unicode=True)
+```
 
+> The database.py file contains all db configuration settings. Currently the app supports 3 levels of configuration
 
-db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
+> namely prod, dev & test. prod & dev uses mysql, while test uses sqlite db
 
-Base = declarative_base()
-Base.query = db_session.query_property()
-
-
-def init_db():
-    import models
-    Base.metadata.create_all(bind=engine)
 
