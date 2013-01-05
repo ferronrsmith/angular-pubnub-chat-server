@@ -35,4 +35,9 @@ else:
 
 > namely prod, dev & test. prod & dev uses mysql, while test uses sqlite db
 
-
+Requirements (Python 2.7)
+--------------------------
+flask framework 0.9 # pip install flask // should install all base dependencies
+flask-sqlalchemy    # orm for python
+flask-admin         # pip install flask-admin
+requests            # http://docs.python-requests.org/en/latest/
